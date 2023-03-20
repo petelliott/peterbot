@@ -1,0 +1,3 @@
+[submodule "convert_meme"]
+	path = convert_meme
+	url = git@github.com:ddrscott/convert_meme.git
