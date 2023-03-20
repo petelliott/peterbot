@@ -26,4 +26,17 @@ async def heyliberal(ctx, top, bottom):
         os.system(f"convert_meme/meme.sh heyliberal/{image} {f.name} '{top}' '{bottom}'")
         await ctx.respond(file=discord.File(f.name))
 
+cow = """
+         \\   ^__^
+          \\  (oo)\_______
+             (__)\       )\\/\\
+                 ||----w |
+                 ||     ||
+"""
+@bot.slash_command()
+@discord.option("text")
+async def cowsay(ctx, text):
+    bars = "-"*len(text)
+    await ctx.respond(f"```\n  {bars}\n< {text} >\n  {bars}\n{cow}```")
+
 bot.run(config["token"])
