@@ -39,4 +39,12 @@ async def cowsay(ctx, text):
     bars = "-"*len(text)
     await ctx.respond(f"```\n  {bars}\n< {text} >\n  {bars}\n{cow}```")
 
+@bot.slash_command()
+@discord.option("percent", type=int)
+async def frogress(ctx, percent):
+    with tempfile.NamedTemporaryFile(suffix=".png") as f:
+        os.system(f"magick frogress/background.png frogress/frog.png -geometry {-970 + 9.7 * percent} -composite frogress/bar.png -composite {f.name}")
+        await ctx.respond(file=discord.File(f.name))
+
+
 bot.run(config["token"])
